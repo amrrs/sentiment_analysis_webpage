@@ -1,0 +1,49 @@
+<html>
+    <title> Sentiment Analysis powered by Gradio API</title>
+<body>
+
+    <h1>Sentiment Analysis powered by Gradio API 🤗 </h1>
+<textarea rows='14' id="input_text" placeholder="Enter your text here...."></textarea>
+<button class="get_values" onclick="startUpdate(event)">😻 GET SENTIMENT ☹️</button>
+
+<textarea rows='14' id="result" placeholder="Wait for the result"></textarea>
+
+<script>
+
+function startUpdate(e) {
+ 
+  updateTextArea();
+
+}
+
+
+ function updateTextArea() {
+
+  let url = "https://hf.space/embed/Amrrs/gradio-sentiment-analyzer/+/api/predict/"; // url
+
+  
+  var text = document.getElementById("input_text").value;
+
+  //console.log(text);
+  
+  fetch(url,  { method: "POST", body: JSON.stringify({"data": [text]
+
+}), headers: { "Content-Type": "application/json" } })
+    .then(response => response.json())
+    .then(data => {
+      let textArea = document.getElementById("result");
+      // parsing the JSON value to string
+      textArea.value = JSON.stringify(data);
+    })
+ 
+
+  }
+</script>
+
+<p>Happy Coding  </p>
+
+<h3>subscribe to 1littlecoder he's awesome</h3>
+
+
+</body>
+</html>
